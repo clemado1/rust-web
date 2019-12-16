@@ -1,0 +1,18 @@
+[package]
+name = "backend"
+version = "0.1.0"
+authors = ["= <=>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = { version = "1.0.9", features = ["rust-tls"] }
+diesel = { version = "1.4.3", features = ["chrono", "r2d2", "sqlite", "uuid"] }
+chrono = { version = "0.4.6", features = ["serde"] }
+env_logger= "0.7.1"
+r2d2 = "0.8.7"
+futures = "0.1"
+serde_derive = "1.0"
+serde = { version = "1.0.103", features = ["derive"] }
+serde_json = "1.0.44"
