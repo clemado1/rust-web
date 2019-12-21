@@ -1,0 +1,70 @@
+TARGET = Some("x86_64-pc-windows-msvc")
+OPT_LEVEL = Some("0")
+HOST = Some("x86_64-pc-windows-msvc")
+CC_x86_64-pc-windows-msvc = None
+CC_x86_64_pc_windows_msvc = None
+HOST_CC = None
+CC = None
+CFLAGS_x86_64-pc-windows-msvc = None
+CFLAGS_x86_64_pc_windows_msvc = None
+HOST_CFLAGS = None
+CFLAGS = None
+CRATE_CC_NO_DEFAULTS = None
+CARGO_CFG_TARGET_FEATURE = Some("fxsr,sse,sse2")
+DEBUG = Some("true")
+CC_x86_64-pc-windows-msvc = None
+CC_x86_64_pc_windows_msvc = None
+HOST_CC = None
+CC = None
+CFLAGS_x86_64-pc-windows-msvc = None
+CFLAGS_x86_64_pc_windows_msvc = None
+HOST_CFLAGS = None
+CFLAGS = None
+CRATE_CC_NO_DEFAULTS = None
+CARGO_CFG_TARGET_FEATURE = Some("fxsr,sse,sse2")
+CC_x86_64-pc-windows-msvc = None
+CC_x86_64_pc_windows_msvc = None
+HOST_CC = None
+CC = None
+CFLAGS_x86_64-pc-windows-msvc = None
+CFLAGS_x86_64_pc_windows_msvc = None
+HOST_CFLAGS = None
+CFLAGS = None
+CRATE_CC_NO_DEFAULTS = None
+CARGO_CFG_TARGET_FEATURE = Some("fxsr,sse,sse2")
+CC_x86_64-pc-windows-msvc = None
+CC_x86_64_pc_windows_msvc = None
+HOST_CC = None
+CC = None
+CFLAGS_x86_64-pc-windows-msvc = None
+CFLAGS_x86_64_pc_windows_msvc = None
+HOST_CFLAGS = None
+CFLAGS = None
+CRATE_CC_NO_DEFAULTS = None
+CARGO_CFG_TARGET_FEATURE = Some("fxsr,sse,sse2")
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "C:\\Users\\clemado1\\AppData\\Local\\Temp\\argonautica.hXJfbe8qcvVz" "-FoC:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\phc-winner-argon2/src\\argon2.o" "-c" "phc-winner-argon2/src/argon2.c"
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "C:\\Users\\clemado1\\AppData\\Local\\Temp\\argonautica.hXJfbe8qcvVz" "-FoC:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\phc-winner-argon2/src\\thread.o" "-c" "phc-winner-argon2/src/thread.c"
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "C:\\Users\\clemado1\\AppData\\Local\\Temp\\argonautica.hXJfbe8qcvVz" "-FoC:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\phc-winner-argon2/src\\core.o" "-c" "phc-winner-argon2/src/core.c"
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "C:\\Users\\clemado1\\AppData\\Local\\Temp\\argonautica.hXJfbe8qcvVz" "-FoC:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\phc-winner-argon2/src\\encoding.o" "-c" "phc-winner-argon2/src/encoding.c"
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "C:\\Users\\clemado1\\AppData\\Local\\Temp\\argonautica.hXJfbe8qcvVz" "-FoC:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\phc-winner-argon2/src/blake2\\blake2b.o" "-c" "phc-winner-argon2/src/blake2/blake2b.c"
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "C:\\Users\\clemado1\\AppData\\Local\\Temp\\argonautica.hXJfbe8qcvVz" "-FoC:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\phc-winner-argon2/src\\ref.o" "-c" "phc-winner-argon2/src/ref.c"
+argon2.c
+core.c
+thread.c
+encoding.c
+blake2b.c
+ref.c
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+AR_x86_64-pc-windows-msvc = None
+AR_x86_64_pc_windows_msvc = None
+HOST_AR = None
+AR = None
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\lib.exe" "-out:C:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\libargon2.a" "-nologo" "C:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\phc-winner-argon2/src\\argon2.o" "C:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\phc-winner-argon2/src\\core.o" "C:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\phc-winner-argon2/src/blake2\\blake2b.o" "C:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\phc-winner-argon2/src\\encoding.o" "C:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\phc-winner-argon2/src\\thread.o" "C:\\Users\\clemado1\\Documents\\workspace\\rare\\backend\\target\\debug\\build\\argonautica-d41ff67780f9b669\\out\\phc-winner-argon2/src\\ref.o"
+exit code: 0
+cargo:rustc-link-lib=static=argon2
+cargo:rustc-link-search=native=C:\Users\clemado1\Documents\workspace\rare\backend\target\debug\build\argonautica-d41ff67780f9b669\out

@@ -1,0 +1,11 @@
+C:\Users\clemado1\Documents\workspace\rare\backend\target\debug\deps\clang_sys-2819e2a2703c94cd.rmeta: C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\clang-sys-0.26.4\src\lib.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\clang-sys-0.26.4\src\support.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\clang-sys-0.26.4\src\link.rs C:\Users\clemado1\Documents\workspace\rare\backend\target\debug\build\clang-sys-86cbe5ed3a6d2fd6\out/common.rs C:\Users\clemado1\Documents\workspace\rare\backend\target\debug\build\clang-sys-86cbe5ed3a6d2fd6\out/dynamic.rs
+
+C:\Users\clemado1\Documents\workspace\rare\backend\target\debug\deps\libclang_sys-2819e2a2703c94cd.rlib: C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\clang-sys-0.26.4\src\lib.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\clang-sys-0.26.4\src\support.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\clang-sys-0.26.4\src\link.rs C:\Users\clemado1\Documents\workspace\rare\backend\target\debug\build\clang-sys-86cbe5ed3a6d2fd6\out/common.rs C:\Users\clemado1\Documents\workspace\rare\backend\target\debug\build\clang-sys-86cbe5ed3a6d2fd6\out/dynamic.rs
+
+C:\Users\clemado1\Documents\workspace\rare\backend\target\debug\deps\clang_sys-2819e2a2703c94cd.d: C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\clang-sys-0.26.4\src\lib.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\clang-sys-0.26.4\src\support.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\clang-sys-0.26.4\src\link.rs C:\Users\clemado1\Documents\workspace\rare\backend\target\debug\build\clang-sys-86cbe5ed3a6d2fd6\out/common.rs C:\Users\clemado1\Documents\workspace\rare\backend\target\debug\build\clang-sys-86cbe5ed3a6d2fd6\out/dynamic.rs
+
+C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\clang-sys-0.26.4\src\lib.rs:
+C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\clang-sys-0.26.4\src\support.rs:
+C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\clang-sys-0.26.4\src\link.rs:
+C:\Users\clemado1\Documents\workspace\rare\backend\target\debug\build\clang-sys-86cbe5ed3a6d2fd6\out/common.rs:
+C:\Users\clemado1\Documents\workspace\rare\backend\target\debug\build\clang-sys-86cbe5ed3a6d2fd6\out/dynamic.rs:
