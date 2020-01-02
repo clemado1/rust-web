@@ -31,7 +31,7 @@ where
 pub struct User {
     pub email: String,
     pub hash: String,
-    pub create_at: chrono::NaiveDateTime,
+    pub created_at: chrono::NaiveDateTime,
 }
 
 impl User {
@@ -39,7 +39,7 @@ impl User {
         User {
             email: email.into(),
             hash: pwd.into(),
-            create_at: chrono::Local::now().naive_local(),
+            created_at: chrono::Local::now().naive_local(),
         }
     }
 }

@@ -9,8 +9,10 @@ use actix_web::{middleware, web, App, HttpServer};
 use diesel::prelude::*;
 use diesel::r2d2::{self, ConnectionManager};
 
+mod error;
 mod models;
 mod schema;
+mod utils;
 
 fn main() -> std::io::Result<()> {
     dotenv::dotenv().ok();
@@ -56,5 +58,5 @@ fn main() -> std::io::Result<()> {
             )
     })
     .bind("127.0.0.1:3000")?
-    .run();
+    .run()
 }
