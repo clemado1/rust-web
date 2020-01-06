@@ -9,7 +9,8 @@ use actix_web::{middleware, web, App, HttpServer};
 use diesel::prelude::*;
 use diesel::r2d2::{self, ConnectionManager};
 
-mod error;
+mod errors;
+mod invitation_handler;
 mod models;
 mod schema;
 mod utils;
@@ -45,7 +46,10 @@ fn main() -> std::io::Result<()> {
             .data(web::JsonConfig::default().limit(4096))
             .service(
                 web::scope("/api")
-                    .service(web::resource("/invitation").route(web::post().to(|| {})))
+                    .service(
+                        web::resource("/invitation")
+                            .route(web::post().to_async(invitation_handler::post_invitation)),
+                    )
                     .service(
                         web::resource("/register/{invitation_id}").route(web::post().to(|| {})),
                     )
