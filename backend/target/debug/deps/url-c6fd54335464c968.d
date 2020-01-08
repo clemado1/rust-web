@@ -1,0 +1,13 @@
+c:\Users\clemado1\Documents\workspace\rare\backend\target\debug\deps\url-c6fd54335464c968.rmeta: C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\lib.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\encoding.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\host.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\origin.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\path_segments.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\parser.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\slicing.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\form_urlencoded.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\quirks.rs
+
+c:\Users\clemado1\Documents\workspace\rare\backend\target\debug\deps\url-c6fd54335464c968.d: C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\lib.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\encoding.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\host.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\origin.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\path_segments.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\parser.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\slicing.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\form_urlencoded.rs C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\quirks.rs
+
+C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\lib.rs:
+C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\encoding.rs:
+C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\host.rs:
+C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\origin.rs:
+C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\path_segments.rs:
+C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\parser.rs:
+C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\slicing.rs:
+C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\form_urlencoded.rs:
+C:\Users\clemado1\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.2\src\quirks.rs:
