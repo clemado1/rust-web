@@ -32,7 +32,7 @@ pub fn send_invitation(invitation: &Invitation) -> Result<(), ServiceError> {
         .to(recipient)
         .from(gmail_id.as_str())
         .subject("You have been invited to join Simple-Auth-Server Rust")
-        .text(email_body.to_string())
+        .html(email_body.to_string())
         .build()
         .unwrap()
         .into();
