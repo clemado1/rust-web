@@ -9,10 +9,12 @@ use actix_web::{middleware, web, App, HttpServer};
 use diesel::prelude::*;
 use diesel::r2d2::{self, ConnectionManager};
 
+mod auth_handler;
 mod email_service;
 mod errors;
 mod invitation_handler;
 mod models;
+mod register_handler;
 mod schema;
 mod utils;
 
@@ -52,13 +54,14 @@ fn main() -> std::io::Result<()> {
                             .route(web::post().to_async(invitation_handler::post_invitation)),
                     )
                     .service(
-                        web::resource("/register/{invitation_id}").route(web::post().to(|| {})),
+                        web::resource("/register/{invitation_id}")
+                            .route(web::post().to_async(register_handler::register_user)),
                     )
                     .service(
                         web::resource("/auth")
-                            .route(web::post().to(|| {}))
-                            .route(web::delete().to(|| {}))
-                            .route(web::get().to(|| {})),
+                            .route(web::post().to_async(auth_handler::login))
+                            .route(web::delete().to(auth_handler::logout))
+                            .route(web::get().to(auth_handler::get_me)),
                     ),
             )
     })
