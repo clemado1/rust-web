@@ -1,6 +1,6 @@
 /target
 **/*.rs.bk
 .env
-./backend/target/*
-./backend/.env
-./yclient/target/*
+/backend/target
+/backend/.env
+/yclient/target
