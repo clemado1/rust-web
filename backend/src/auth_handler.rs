@@ -1,3 +1,6 @@
+/**
+ * T0DO: cookie -> session
+ */
 use actix_identity::Identity;
 use actix_web::{
     dev::Payload, error::BlockingError, web, Error, FromRequest, HttpRequest, HttpResponse,
