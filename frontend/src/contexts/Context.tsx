@@ -1,11 +1,11 @@
 import React, { useContext, useState, createContext } from "react";
 
 import { DEFAULT_USER, User, Invitation } from "models";
-import { authHandler } from "api/Api";
+import { retreiveAuth } from "api/Api";
 
 interface IAuthContextInterface {
   auth: User;
-  setAuthStatus: (auth: Invitation) => void;
+  setAuthStatus: (auth: User) => void;
   setUnauthStatus: () => void;
 }
 
@@ -20,15 +20,15 @@ const { Provider } = authContext;
 const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children
 }) => {
-  const [auth, setAuth] = React.useState(authHandler("/auth", "GET"));
+  const [auth, setAuth] = React.useState(retreiveAuth("/auth", "GET"));
 
   const setAuthStatus = (auth: User) => {
-    authHandler("/auth", "POST");
+    retreiveAuth("/auth", "POST");
     setAuth(auth);
   };
 
   const setUnauthStatus = () => {
-    authHandler("/auth", "DELETE");
+    retreiveAuth("/auth", "DELETE");
     setAuth(DEFAULT_USER);
   };
 

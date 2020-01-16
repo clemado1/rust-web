@@ -5,7 +5,10 @@ const api = axios.create({
   baseURL: "https://localhost:8088/"
 });
 
-export const authHandler = async (url: string, method: string): User => {
+export const authHandler = async (
+  url: string,
+  method: string
+): Promise<User> => {
   const response = await fetch(url, {
     method,
     headers: {
@@ -17,7 +20,7 @@ export const authHandler = async (url: string, method: string): User => {
   return await response.json();
 };
 
-const deserializeUserJson = (): User => {
+export const deserializeUserJson = (promUser: Promise<User>): User => {
   const user: User = {
     email: "",
     hash: "",
@@ -25,6 +28,11 @@ const deserializeUserJson = (): User => {
   };
 
   return user;
+};
+
+export const retreiveAuth = (url: string, method: string): User => {
+  const promUser = authHandler(url, method);
+  return deserializeUserJson(promUser);
 };
 
 export const authRequest = async (
