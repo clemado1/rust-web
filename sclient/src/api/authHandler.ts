@@ -1,4 +1,4 @@
-let URL: string = "http://localhost:5000/api/";
+let URL: string = 'http://localhost:5000/api/'
 
 /**
  * login -> response
@@ -9,57 +9,57 @@ let URL: string = "http://localhost:5000/api/";
  */
 
 export const authRequest = async (method: string): Promise<any> => {
-  let call_url: string = URL + "auth";
-  try {
-    const response = await fetch(call_url, {
-      method,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    });
+    let call_url: string = URL + 'auth'
+    try {
+        const response = await fetch(call_url, {
+            method,
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
 
-    console.log(response);
+        console.log(response)
 
-    if (response.status !== 404) {
-      return await response.json();
+        if (response.status !== 404) {
+            return await response.json()
+        }
+    } catch (err) {
+        console.log('15')
+        console.log(err)
+        return undefined
     }
-  } catch (err) {
-    console.log("15");
-    console.log(err);
-    return "Unknown";
-  }
-};
+}
 
 export const inviteUser = async (email: string): Promise<any> => {
-  let method: string = "POST";
-  let call_url: string = URL + "invitation";
-  const response = await fetch(call_url, {
-    method,
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(email)
-  });
+    let method: string = 'POST'
+    let call_url: string = URL + 'invitation'
+    const response = await fetch(call_url, {
+        method,
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(email),
+    })
 
-  return await response;
-};
+    return await response
+}
 
 export const registerUser = async (
-  id: string,
-  password: string
+    id: string,
+    password: string
 ): Promise<any> => {
-  let method: string = "POST";
-  let call_url: string = URL + "register/" + id;
-  const response = await fetch(call_url, {
-    method,
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(password)
-  });
+    let method: string = 'POST'
+    let call_url: string = URL + 'register/' + id
+    const response = await fetch(call_url, {
+        method,
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(password),
+    })
 
-  return await response;
-};
+    return await response
+}
