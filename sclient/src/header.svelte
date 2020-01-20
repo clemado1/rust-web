@@ -1,6 +1,6 @@
 <script lang="ts">
     import { writable } from 'svelte/store'
-    import { link } from 'svelte-spa-router/Router.svelte'
+    import { link, push, replace } from 'svelte-spa-router/Router.svelte'
 
     import { onMount } from 'svelte'
     // @ts-ignore

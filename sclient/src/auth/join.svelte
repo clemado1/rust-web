@@ -1,9 +1,12 @@
 <script lang="ts">
-    import { inviteUser } from '../api/authHandler'
+    // @ts-ignore
+    import { inviteUser } from '../api/authHandler.ts'
     let error_boolean: boolean = false
     let email: string
     let message: string
     let result: boolean = false
+
+    console.log('join')
 
     async function handleSubmit(event: Event) {
         console.log(event)

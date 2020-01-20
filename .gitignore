@@ -3,4 +3,6 @@
 .env
 /backend/target
 /backend/.env
+/warp-web/target
+/warp-web/.env
 /yclient/target
