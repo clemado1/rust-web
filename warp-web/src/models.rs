@@ -5,7 +5,7 @@ use diesel::{r2d2::ConnectionManager, PgConnection};
 pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 
 #[derive(Debug, Serialize, Deserialize, Queryable, Insertable)]
-#[table_name = "invitations"]
+#[table_name = "session_tb"]
 pub struct Invitation {
     pub id: uuid::Uuid,
     pub email: String,
@@ -21,21 +21,28 @@ where
         Invitation {
             id: uuid::Uuid::new_v4(),
             email: email.into(),
-            expires_at: chrono::Local::now().naive_local() + chrono::Duration::hours(24),
+            expires_at: chrono::Local::now().naive_local()
+                + chrono::Duration::hours(24),
         }
     }
 }
 
 #[derive(Debug, Serialize, Deserialize, Queryable, Insertable)]
-#[table_name = "users"]
+#[table_name = "user_tb"]
 pub struct User {
     pub email: String,
     pub hash: String,
+    pub passwd: String,
+    pub username: String,
+    pub nickname: String,
     pub created_at: chrono::NaiveDateTime,
 }
 
 impl User {
-    pub fn from_details<S: Into<String>, T: Into<String>>(email: S, pwd: T) -> Self {
+    pub fn from_details<S: Into<String>, T: Into<String>>(
+        email: S,
+        pwd: T,
+    ) -> Self {
         User {
             email: email.into(),
             hash: pwd.into(),
