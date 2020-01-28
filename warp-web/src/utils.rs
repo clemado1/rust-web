@@ -1,22 +1,21 @@
-use crate::errors::ServiceError;
 use argonautica::{Hasher, Verifier};
 
 lazy_static::lazy_static! {
 pub  static ref SECRET_KEY: String = std::env::var("SECRET_KEY").unwrap_or_else(|_| "0123".repeat(8));
 }
 
-pub fn hash_password(password: &str) -> Result<String, ServiceError> {
+pub fn hash_password(password: &str) -> Result<String, Err> {
     Hasher::default()
         .with_password(password)
         .with_secret_key(SECRET_KEY.as_str())
         .hash()
         .map_err(|err| {
             dbg!(err);
-            ServiceError::InternalServerError
+            Err
         })
 }
 
-pub fn verify(hash: &str, password: &str) -> Result<bool, ServiceError> {
+pub fn verify(hash: &str, password: &str) -> Result<bool, Err> {
     Verifier::default()
         .with_hash(hash)
         .with_password(password)
@@ -24,6 +23,6 @@ pub fn verify(hash: &str, password: &str) -> Result<bool, ServiceError> {
         .verify()
         .map_err(|err| {
             dbg!(err);
-            ServiceError::Unauthorized
+            Err
         })
 }

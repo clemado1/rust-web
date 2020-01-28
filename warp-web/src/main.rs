@@ -1,10 +1,16 @@
 use std::env;
-use warp::{self, path, Filter};
+use warp::{self, body, get, path, path::end, post, Filter};
 
+use diesel::prelude::*;
+use diesel::r2d2::{self, ConnectionManager};
+
+mod auth_handler;
+mod invite_handler;
 mod models;
+mod register_handler;
+mod schema;
+mod utils;
 
-/// Provides a RESTful web server managing some Todos.
-///
 /// API will be:
 ///
 /// - `GET /auth`: return a JSON Object of session user.
@@ -14,7 +20,7 @@ mod models;
 pub fn create_connection() -> models::Pool {
     let db_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set.");
     // create db connection pool
-    let manager = ConnectionManager::<PgConnection>::new(database_url);
+    let manager = ConnectionManager::<PgConnection>::new(db_url);
     r2d2::Pool::builder()
         .build(manager)
         .expect("Faild to create poll")
@@ -22,7 +28,6 @@ pub fn create_connection() -> models::Pool {
 
 #[tokio::main]
 async fn main() {
-    dotenv::dotenv().ok();
     if env::var_os("RUST_LOG").is_none() {
         // also can main=info
         env::set_var("RUST_LOG", "main=debug");
@@ -32,6 +37,7 @@ async fn main() {
     let log = warp::log("debug");
 
     let pool: models::Pool = create_connection();
+    let db = move || pool.clone();
 
     // GET /hello/warp => 200 OK with body "Hello, warp!"
     let hello =
@@ -41,7 +47,21 @@ async fn main() {
     let invite = path!("invite").map(|| "Hello!");
 
     // GET /auth =>
-    let auth = path!("auth").map(|| "Hello!");
+    let auth = warp::path!("auth")
+        .and(warp::post())
+        .and(body::form())
+        .and(db)
+        .and_then(auth_handler::login())
+        .or(warp::path!("auth")
+            .and(warp::get())
+            .and(body::form())
+            .and(db)
+            .and_then(auth_handler::get_me()))
+        .or(warp::path!("auth")
+            .and(warp::delete())
+            .and(body::form())
+            .and(db)
+            .and_then(auth_handler::logout()));
 
     // GET /register =>
     let register =
@@ -50,73 +70,4 @@ async fn main() {
     let routes = warp::get().and(hello.or(invite).or(auth).or(register));
 
     warp::serve(routes).run(([127, 0, 0, 1], 8080)).await;
-}
-
-mod filters {
-    use warp::Filter;
-
-    /// The 3 filters combined.
-    pub fn auth_filter(
-        db: Db,
-    ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone
-    {
-        get_user(db.clone()).or(login(db.clone())).or(logout(db))
-    }
-
-    /// GET /auth
-    pub fn get_user(
-        db: Db,
-    ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone
-    {
-        warp::path!("todos")
-            .and(warp::get())
-            .and(warp::query::<ListOptions>())
-            .and(with_db(db))
-            .and_then(handlers::list_todos)
-    }
-
-    /// POST /auth with JSON body
-    pub fn login(
-        db: Db,
-    ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone
-    {
-        warp::path!("auth")
-            .and(warp::post())
-            .and(json_body())
-            .and(with_db(db))
-            .and_then(handlers::create_todo)
-    }
-
-    /// DELETE /todos/:id
-    pub fn logout(
-        db: Db,
-    ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone
-    {
-        // We'll make one of our endpoints admin-only to show how authentication filters are used
-        let admin_only = warp::header::exact("authorization", "Bearer admin");
-
-        warp::path!("auth" / u64)
-            // It is important to put the auth check _after_ the path filters.
-            // If we put the auth check before, the request `PUT /todos/invalid-string`
-            // would try this filter and reject because the authorization header doesn't match,
-            // rather because the param is wrong for that other path.
-            .and(admin_only)
-            .and(warp::delete())
-            .and(with_db(db))
-            .and_then(handlers::delete_todo)
-    }
-
-    fn with_db(
-        db: Db,
-    ) -> impl Filter<Extract = (Db,), Error = std::convert::Infallible> + Clone
-    {
-        warp::any().map(move || db.clone())
-    }
-
-    fn json_body(
-    ) -> impl Filter<Extract = (Todo,), Error = warp::Rejection> + Clone {
-        // When accepting a body, we want a JSON body
-        // (and to reject huge payloads)...
-        warp::body::content_length_limit(1024 * 16).and(warp::body::json())
-    }
 }
