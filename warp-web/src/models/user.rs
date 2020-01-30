@@ -11,14 +11,14 @@ use crate::schema::user_tb::dsl::*;
 #[table_name = "user_tb"]
 pub struct NewUser {
     pub email: String,
-    pub passwd: String,
-    pub username: String,
-    pub nickname: String,
+    pub passwd: Option<String>,
+    pub username: Option<String>,
+    pub nickname: Option<String>,
     pub created_at: chrono::NaiveDateTime,
 }
 
 impl NewUser {
-    pub fn join(&self, connection: &PgConnection) -> Result<Post, deisel::result::Error> {
+    pub fn join(&self, connection: &PgConnection) -> Result<User, diesel::result::Error> {
         diesel::insert_into(user_tb::table)
             .values(self)
             .get_result(connection)
@@ -28,9 +28,10 @@ impl NewUser {
 #[derive(Queryable, Serialize, Deserialize, Debug)]
 pub struct User {
     pub email: String,
-    pub passwd: String,
-    pub username: String,
-    pub nickname: String,
+    pub passwd: Option<String>,
+    pub username: Option<String>,
+    pub nickname: Option<String>,
+    pub created_at: chrono::NaiveDateTime,
 }
 
 pub struct LogUser {
@@ -40,13 +41,10 @@ pub struct LogUser {
 
 impl User {
     pub fn get_me(
-        log_user: LogUser,
+        log_user: User,
         connection: &PgConnection,
     ) -> Result<User, diesel::result::Error> {
-        user_tb::table.find(log_user.email).first(connection);
-
-        /**
-         * TO-DO: 비밀번호 인증
-         */
+        // TO-DO: 비밀번호 인증
+        user_tb::table.find(log_user.email).first(connection)
     }
 }

@@ -1,12 +1,4 @@
 table! {
-    invitations (id) {
-        id -> Uuid,
-        email -> Varchar,
-        expires_at -> Timestamp,
-    }
-}
-
-table! {
     session_tb (id) {
         id -> Uuid,
         email -> Varchar,
@@ -17,7 +9,6 @@ table! {
 table! {
     user_tb (email) {
         email -> Varchar,
-        hash -> Varchar,
         passwd -> Nullable<Varchar>,
         username -> Nullable<Varchar>,
         nickname -> Nullable<Varchar>,
@@ -25,4 +16,4 @@ table! {
     }
 }
 
-allow_tables_to_appear_in_same_query!(invitations, session_tb, user_tb,);
+allow_tables_to_appear_in_same_query!(session_tb, user_tb,);

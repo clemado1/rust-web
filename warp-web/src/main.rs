@@ -3,6 +3,8 @@
 extern crate diesel;
 #[macro_use]
 extern crate serde_derive;
+#[macro_use]
+extern crate lazy_static;
 
 use std::env;
 use warp::{self, body, get, path, path::end, post, Filter};
@@ -12,11 +14,10 @@ use diesel::prelude::*;
 use diesel::r2d2::{self, ConnectionManager};
 
 mod invite_handler;
+mod models;
 mod register_handler;
 mod schema;
-mod utils;
-use crate::models::user;
-use crate::session::POOL;
+mod session;
 
 /// API will be:
 ///
