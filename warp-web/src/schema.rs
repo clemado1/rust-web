@@ -25,9 +25,4 @@ table! {
     }
 }
 
-allow_tables_to_appear_in_same_query!(
-    invitations,
-    session_tb,
-    user_tb,
-    users,
-);
+allow_tables_to_appear_in_same_query!(invitations, session_tb, user_tb,);
