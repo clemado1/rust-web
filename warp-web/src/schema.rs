@@ -9,9 +9,9 @@ table! {
 table! {
     user_tb (email) {
         email -> Varchar,
-        passwd -> Nullable<Varchar>,
-        username -> Nullable<Varchar>,
-        nickname -> Nullable<Varchar>,
+        passwd -> Varchar,
+        username -> Varchar,
+        nickname -> Varchar,
         created_at -> Timestamp,
     }
 }

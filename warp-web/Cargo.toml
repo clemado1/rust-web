@@ -9,6 +9,7 @@ edition = "2018"
 [dependencies]
 argonautica = "0.2.0"
 bytes = "0.5"
+bcrypt = "0.5.0"
 chrono = { version = "0.4.6", features = ["serde"] }
 derive_more = "0.15.0"
 diesel = { version = "1.4.2", features = ["postgres","uuidv07", "r2d2", "chrono"] }

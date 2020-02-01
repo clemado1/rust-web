@@ -13,11 +13,11 @@ use diesel::pg::PgConnection;
 use diesel::prelude::*;
 use diesel::r2d2::{self, ConnectionManager};
 
+mod handlers;
 mod invite_handler;
 mod models;
 mod register_handler;
 mod schema;
-mod session;
 
 /// API will be:
 ///
