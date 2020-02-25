@@ -7,14 +7,12 @@ extern crate serde_derive;
 extern crate lazy_static;
 
 use std::env;
-use warp::{self, body, get, path, path::end, post, Filter};
+use warp::{self, path, Filter};
 
-use diesel::pg::PgConnection;
 use diesel::prelude::*;
-use diesel::r2d2::{self, ConnectionManager};
 
+mod db;
 mod handlers;
-mod invite_handler;
 mod models;
 mod register_handler;
 mod schema;

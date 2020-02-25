@@ -15,7 +15,7 @@ mod tests {
 
         let resp = request()
             .method("POST")
-            .path("/auth")
+            .path("/api/auth")
             .json(&Todo {
                 id: 1,
                 text: "test 1".into(),
@@ -35,7 +35,7 @@ mod tests {
 
         let resp = request()
             .method("POST")
-            .path("/auth")
+            .path("/api/auth")
             .json(&todo1())
             .reply(&api)
             .await;
@@ -51,16 +51,16 @@ mod tests {
 
         let resp = request()
             .method("PUT")
-            .path("/auth")
+            .path("/api/auth")
             .header("authorization", "Bearer admin")
-            .json(&todo1())
+            .json(&user())
             .reply(&api)
             .await;
 
         assert_eq!(resp.status(), StatusCode::NOT_FOUND);
     }
 
-    fn todo1() -> Todo {
+    fn user() -> Todo {
         Todo {
             id: 1,
             text: "test 1".into(),

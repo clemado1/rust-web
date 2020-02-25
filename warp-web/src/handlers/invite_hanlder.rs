@@ -1,17 +1,16 @@
 use warp;
-use warp::{self, Rejection, Reply};
 
 use crate::{db::postgresql::POOL, models::invitation::Invitation};
 
-pub async fn repeat(input: String) -> Result<Reply, Rejection> {
+pub async fn repeat(input: String) -> Result<impl warp::Reply, warp::Rejection> {
     println!("{:#?}", &input);
     Ok(warp::reply::html(input))
 }
 
-pub async fn invite(email: String) -> Result<Reply, Rejection> {
-    let conn = POOL.get().unwarp();
+pub async fn invite(email: String) -> Result<impl warp::Reply, warp::Rejection> {
+    let conn = POOL.get().unwrap();
     let response = Invitation::invite(
-        Invitation {
+        &Invitation {
             id: uuid::Uuid::new_v4(),
             email: email,
             expired_at: chrono::Local::now().naive_local() + chrono::Duration::hours(24),
@@ -21,7 +20,7 @@ pub async fn invite(email: String) -> Result<Reply, Rejection> {
 
     let reply = match response {
         Ok(invitation) => {
-            println!("{:#?}", &user);
+            println!("{:#?}", &invitation);
             invitation
         }
         Err(e) => {
@@ -32,13 +31,13 @@ pub async fn invite(email: String) -> Result<Reply, Rejection> {
     Ok(warp::reply::json(&reply))
 }
 
-pub async fn register(session: Invitation) -> Result<Reply, Rejection> {
-    let conn = POOL.get().unwarp();
-    let response = Invitation::register(session, &conn);
+pub async fn authenticate(session: Invitation) -> Result<impl warp::Reply, warp::Rejection> {
+    let conn = POOL.get().unwrap();
+    let response = Invitation::authenticate(session, &conn);
 
     let reply = match response {
         Ok(invitation) => {
-            println!("{:#?}", &user);
+            println!("{:#?}", &invitation);
             invitation
         }
         Err(e) => {

@@ -7,9 +7,6 @@ use diesel::QueryDsl;
 use diesel::RunQueryDsl;
 use log::error;
 
-use crate::schema::user_tb::dsl;
-use crate::schema::user_tb::dsl::*;
-
 #[derive(Insertable, Deserialize, AsChangeset)]
 #[table_name = "user_tb"]
 pub struct NewUser {
@@ -45,12 +42,12 @@ impl User {
         user_tb::table.find(user_email).first(connection)
     }
 
-    pub fn login(log_email: &str, log_passwd: &str, connection: &PgConnection) -> Option<Self> {
+    pub fn login(log_user: User, connection: &PgConnection) -> Option<Self> {
         let user: Result<User, diesel::result::Error> =
-            user_tb::table.find(log_email).first(connection);
+            user_tb::table.find(log_user.email).first(connection);
 
         match user {
-            Ok(user) => match bcrypt::verify(&log_passwd, &user.passwd) {
+            Ok(user) => match bcrypt::verify(&log_user.passwd, &user.passwd) {
                 Ok(true) => return Some(user),
                 Ok(false) => return None,
                 Err(e) => {

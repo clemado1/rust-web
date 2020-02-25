@@ -2,7 +2,7 @@ table! {
     session_tb (id) {
         id -> Uuid,
         email -> Varchar,
-        expires_at -> Timestamp,
+        expired_at -> Timestamp,
     }
 }
 
