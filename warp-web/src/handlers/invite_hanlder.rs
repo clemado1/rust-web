@@ -7,12 +7,12 @@ pub async fn repeat(input: String) -> Result<impl warp::Reply, warp::Rejection> 
     Ok(warp::reply::html(input))
 }
 
-pub async fn invite(email: String) -> Result<impl warp::Reply, warp::Rejection> {
+pub async fn invite(invitation: Invitation) -> Result<impl warp::Reply, warp::Rejection> {
     let conn = POOL.get().unwrap();
     let response = Invitation::invite(
         &Invitation {
             id: uuid::Uuid::new_v4(),
-            email: email,
+            email: invitation.email,
             expired_at: chrono::Local::now().naive_local() + chrono::Duration::hours(24),
         },
         &conn,
@@ -31,7 +31,7 @@ pub async fn invite(email: String) -> Result<impl warp::Reply, warp::Rejection> 
     Ok(warp::reply::json(&reply))
 }
 
-pub async fn authenticate(session: Invitation) -> Result<impl warp::Reply, warp::Rejection> {
+pub async fn authenticate(session: uuid::Uuid) -> Result<impl warp::Reply, warp::Rejection> {
     let conn = POOL.get().unwrap();
     let response = Invitation::authenticate(session, &conn);
 

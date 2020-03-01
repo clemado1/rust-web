@@ -25,8 +25,6 @@ pub fn join() -> BoxedFilter<(NewUser,)> {
 }
 
 pub fn get() -> BoxedFilter<(String,)> {
-    let json_body = warp::body::content_length_limit(1024 * 16).and(warp::body::json());
-
     warp::get()
         .and(path_prefix())
         .and(warp::path::param::<String>())
@@ -44,8 +42,6 @@ pub fn login() -> BoxedFilter<(User,)> {
 }
 
 pub fn logout() -> BoxedFilter<(String,)> {
-    let json_body = warp::body::content_length_limit(1024 * 16).and(warp::body::json());
-
     warp::get()
         .and(path_prefix())
         .and(warp::path::param::<String>())

@@ -23,11 +23,11 @@ impl Invitation {
     }
 
     pub fn authenticate(
-        session: Invitation,
+        session: uuid::Uuid,
         connection: &PgConnection,
     ) -> Result<Invitation, diesel::result::Error> {
         session_tb
-            .filter(id.eq(session.id))
+            .filter(id.eq(session))
             .load::<Invitation>(connection)
             .and_then(|mut result| {
                 if let Some(invitation) = result.pop() {
