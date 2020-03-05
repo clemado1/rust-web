@@ -1,51 +1,48 @@
 #![allow(dead_code)]
+
+use warp::{self, Filter};
+
+use console::Style;
+
+mod handlers;
+mod routes;
+use self::{
+    handlers::{auth_handler, invite_handler},
+    routes::{auth_route, invite_route},
+};
+
+#[macro_use]
+extern crate lazy_static;
 #[macro_use]
 extern crate diesel;
 #[macro_use]
 extern crate serde_derive;
-#[macro_use]
-extern crate lazy_static;
-
-use std::env;
-use warp::{self, path, Filter};
 
 use diesel::prelude::*;
 
 mod db;
-mod handlers;
 mod models;
-mod register_handler;
 mod schema;
 
-/// API will be:
-///
-/// - `GET /auth`: return a JSON Object of session user.
-/// - `POST /auth`: login.
-/// - `DELETE /auth`: delete a session user.
+mod api;
+
+#[cfg(test)]
+mod tests;
 
 #[tokio::main]
 async fn main() {
-    if env::var_os("RUST_LOG").is_none() {
-        // also can main=info
-        env::set_var("RUST_LOG", "main=debug");
-    }
-    pretty_env_logger::init();
+    let target: String = "0.0.0.0:8000".parse().unwrap();
+    let blue = Style::new().blue();
 
-    let log = warp::log("debug");
+    let main_api = invite_user!()
+        .or(authenticate_user!())
+        .or(join_user!())
+        .or(get_user!())
+        .or(login_user!())
+        .or(logout_user!());
 
-    // GET /hello/warp => 200 OK with body "Hello, warp!"
-    let hello = path!("hello" / String).map(|name| format!("Hello, {}!", name));
+    let end = main_api.with(warp::log("main_api"));
 
-    // GET /invitation =>
-    let invite = path!("invite").map(|| "Hello!");
-
-    // GET /auth =>
-    let auth = path!("auth").map(|| "Hello!");
-
-    // GET /register =>
-    let register = path!("register" / String).map(|name| format!("Hello, {}!", name));
-
-    let routes = warp::get().and(hello.or(invite).or(auth).or(register));
-
-    warp::serve(routes).run(([127, 0, 0, 1], 8080)).await;
+    println!("\nRust Warp Server ready at {}", blue.apply_to(&target));
+    warp::serve(end).run(([0, 0, 0, 0], 8000)).await;
 }

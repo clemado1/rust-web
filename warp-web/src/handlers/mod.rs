@@ -1,2 +1,2 @@
 pub mod auth_handler;
-pub mod invite_hanlder;
+pub mod invite_handler;

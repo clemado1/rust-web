@@ -61,6 +61,8 @@ pub async fn login(log_user: User) -> Result<impl warp::Reply, warp::Rejection> 
     Ok(warp::reply::json(&reply))
 }
 
-pub async fn logout(log_user: User) {
+pub async fn logout(user_id: String) -> Result<impl warp::Reply, warp::Rejection> {
     let conn = POOL.get().unwrap();
+
+    Ok(warp::reply::html(""))
 }
