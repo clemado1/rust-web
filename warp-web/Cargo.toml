@@ -14,7 +14,7 @@ futures = { version = "0.3", default-features = false, features = ["alloc"]}
 # Help users to easily click the target localhost.
 console = "0.9.1"
 # Postgresl
-diesel = { version = "1.4.3", features = ["postgres", "r2d2"] }
+diesel = { version = "1.4.3", features = ["postgres", "r2d2", "uuidv07", "chrono"] }
 dotenv = "0.15.0"
 r2d2 = "0.8.6"
 # Serde

@@ -7,7 +7,7 @@ use diesel::QueryDsl;
 use diesel::RunQueryDsl;
 use log::error;
 
-#[derive(Insertable, Deserialize, AsChangeset)]
+#[derive(Insertable, Deserialize)]
 #[table_name = "user_tb"]
 pub struct NewUser {
     pub email: String,

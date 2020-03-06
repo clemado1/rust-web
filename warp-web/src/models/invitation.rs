@@ -7,7 +7,7 @@ use diesel::RunQueryDsl;
 
 use crate::schema::session_tb::dsl::*;
 
-#[derive(Queryable, Insertable, Serialize, Deserialize, AsChangeset, Debug)]
+#[derive(Queryable, Insertable, Serialize, Deserialize, Debug)]
 #[table_name = "session_tb"]
 pub struct Invitation {
     pub id: uuid::Uuid,
