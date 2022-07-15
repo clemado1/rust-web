@@ -32,7 +32,7 @@
         "regenerator-runtime": "^0.13.3",
         "src": "^1.1.2",
         "svelma": "^0.3.0",
-        "svelte": "^3.16.7",
+        "svelte": "^3.49.0",
         "svelte-css-in-js": "^1.0.3",
         "svelte-preprocess": "^3.3.0",
         "svelte-preprocess-sass": "^0.2.0",
