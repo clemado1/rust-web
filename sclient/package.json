@@ -28,7 +28,7 @@
         "parcel-plugin-svelte": "^4.0.5",
         "postcss": "^8.2.13",
         "postcss-load-config": "^2.1.0",
-        "public-ip": "^4.0.0",
+        "public-ip": "^6.0.1",
         "regenerator-runtime": "^0.13.3",
         "src": "^1.1.2",
         "svelma": "^0.3.0",
