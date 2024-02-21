@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "autoprefixer": "^9.7.3",
-        "axios": "^0.21.2",
+        "axios": "^0.28.0",
         "cookie-storage": "^5.0.3",
         "core-js": "^3.6.1",
         "cors": "^2.8.5",
