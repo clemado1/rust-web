@@ -6,3 +6,4 @@
 /warp-web/target
 /warp-web/.env
 /yclient/target
+.DS_Store
