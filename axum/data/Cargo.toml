@@ -7,3 +7,4 @@ edition = "2021"
 axum = "0.7.5"
 serde = { version = "1.0.202", features = ["derive"] }
 tokio = { version = "1.37.0", features = ["macros", "rt-multi-thread"] }
+validator = { version = "0.18.1", features = ["derive"] }
