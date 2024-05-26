@@ -1,3 +1,4 @@
+mod always_errors;
 mod hello_world;
 mod middleware_message;
 mod mirror_body_json;
@@ -16,6 +17,7 @@ use axum::{
     Extension, Router,
 };
 
+use always_errors::always_errors;
 use hello_world::hello_world;
 use middleware_message::middleware_message;
 use mirror_body_json::mirror_body_json;
@@ -59,4 +61,5 @@ pub fn create_routes() -> Router {
         .route("/query_params", get(query_params))
         .layer(Extension(shared_data))
         .layer(cors)
+        .route("/always_errors", get(always_errors))
 }
