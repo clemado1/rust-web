@@ -6,5 +6,9 @@ edition = "2021"
 [dependencies]
 axum = "0.7.5"
 serde = { version = "1.0.202", features = ["derive"] }
-tokio = { version = "1.37.0", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1.37.0", features = ["full", "macros", "rt-multi-thread"] }
 validator = { version = "0.18.1", features = ["derive"] }
+
+dotenvy = "0.15.7"
+dotenvy_macro = "0.15.7"
+sea-orm = { version = "1.0.0", features = ["sqlx-postgres", "runtime-tokio-rustls"] }
