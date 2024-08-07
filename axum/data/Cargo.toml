@@ -12,3 +12,4 @@ validator = { version = "0.18.1", features = ["derive"] }
 dotenvy = "0.15.7"
 dotenvy_macro = "0.15.7"
 sea-orm = { version = "1.0.0", features = ["sqlx-postgres", "runtime-tokio-rustls"] }
+serde_with = "3.9.0"
