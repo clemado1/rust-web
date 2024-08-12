@@ -1,4 +1,5 @@
 mod create_task;
+mod create_user;
 mod custom_json_extractor;
 mod delete_tasks;
 mod get_tasks;
@@ -14,6 +15,7 @@ use axum::{
 use sea_orm::DatabaseConnection;
 
 use create_task::create_task;
+use create_user::create_user;
 use custom_json_extractor::custom_json_extractor;
 use delete_tasks::delete_task;
 use get_tasks::{get_all_tasks, get_one_task};
@@ -33,5 +35,6 @@ pub fn create_routes(database: DatabaseConnection) -> Router {
         .route("/tasks/:task_id", put(atomic_update))
         .route("/tasks/:task_id", patch(partial_update))
         .route("/tasks/:task_id", delete(delete_task))
+        .route("/users", post(create_user))
         .layer(Extension(database))
 }
