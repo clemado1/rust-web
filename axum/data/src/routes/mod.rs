@@ -21,7 +21,7 @@ use get_tasks::{get_all_tasks, get_one_task};
 use hello_world::hello_world;
 use partial_update_tasks::partial_update;
 use update_tasks::atomic_update;
-use users::{create_user, login};
+use users::{create_user, login, logout};
 use validate_with_serde::validate_with_serde;
 
 pub fn create_routes(database: DatabaseConnection) -> Router {
@@ -37,5 +37,6 @@ pub fn create_routes(database: DatabaseConnection) -> Router {
         .route("/tasks/:task_id", delete(delete_task))
         .route("/users", post(create_user))
         .route("/users/login", post(login))
+        .route("/users/logout", post(logout))
         .layer(Extension(database))
 }
