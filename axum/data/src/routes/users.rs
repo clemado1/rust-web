@@ -8,8 +8,8 @@ use sea_orm::{
 };
 use serde::{Deserialize, Serialize};
 
-use crate::database::users;
 use crate::database::users::Entity as Users;
+use crate::database::users::{self, Model};
 
 #[derive(Deserialize)]
 pub struct RequestUser {
@@ -73,19 +73,10 @@ pub async fn login(
 }
 
 pub async fn logout(
-    authorization: TypedHeader<Authorization<Bearer>>,
     Extension(database): Extension<DatabaseConnection>,
+    Extension(user): Extension<Model>,
 ) -> Result<(), StatusCode> {
-    let token = authorization.token();
-
-    let mut user = Users::find()
-        .filter(users::Column::Token.eq(token))
-        .one(&database)
-        .await
-        .map_err(|_error| StatusCode::INTERNAL_SERVER_ERROR)?
-        .ok_or(StatusCode::UNAUTHORIZED)?
-        .into_active_model();
-
+    let mut user = user.into_active_model();
     user.token = Set(None);
 
     user.save(&database)
